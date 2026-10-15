@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aprende Idiomas — Grupo de Estudio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ======================= PANTALLA: INTRO ======================= -->
+  <section id="screenIntro" class="screen">
+    <header class="topbar">
+      <div class="lang-selector" id="langSelector">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="zh" disabled>
+          中文<span class="soon">Próximamente</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="ja" disabled>
+          日本語<span class="soon">Próximamente</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="ar" disabled>
+          العربية<span class="soon">Próximamente</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="intro-card">
+      <div class="moon-glow"></div>
+      <span class="star-dust"></span>
+      <span class="star-dust"></span>
+      <span class="star-dust"></span>
+      <img id="mascot" class="mascot" src="" alt="Mascota del grupo de estudio" />
+      <h1>Aprende <span id="introLangName">inglés</span></h1>
+      <p class="subtitle">8 palabras nuevas te esperan hoy</p>
+      <button type="button" id="startBtn" class="btn-primary">EMPEZAR LECCIÓN</button>
+    </div>
+  </section>
+
+  <!-- ======================= PANTALLA: LECCIÓN ======================= -->
+  <section id="screenLesson" class="screen hidden">
+    <header class="topbar">
+      <div class="lang-selector">
+        <span style="font-family:var(--font-display); font-weight:700; color:var(--text-dim); font-size:13px;">
+          Lección 1
+        </span>
+      </div>
+      <div class="stats">
+        <div class="stat streak"><span class="icon">🔥</span><span id="streakCount">0</span></div>
+        <div class="stat xp"><span class="icon">⭐</span><span id="xpCount">0</span></div>
+        <div class="stat hearts"><span class="icon">❤️</span><span id="heartsCount">5</span></div>
+      </div>
+    </header>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <main id="exerciseArea" class="exercise-area">
+      <!-- Cada dinámica inyecta aquí su propio HTML -->
+    </main>
+
+    <footer class="action-bar">
+      <button type="button" id="checkBtn" class="btn-primary" disabled>COMPROBAR</button>
+    </footer>
+
+    <!-- Banner de corrección inmediata: visible/verde al acertar, rojo al fallar -->
+    <div id="feedbackBanner" class="feedback-banner hidden">
+      <div class="feedback-content">
+        <div class="feedback-icon" id="feedbackIcon"></div>
+        <div>
+          <div class="feedback-title" id="feedbackTitle"></div>
+          <div class="feedback-correction" id="feedbackCorrection"></div>
+        </div>
+      </div>
+      <button type="button" id="continueBtn" class="btn-continue hidden">CONTINUAR</button>
+    </div>
+  </section>
+
+  <!-- ======================= PANTALLA: RESUMEN ======================= -->
+  <section id="screenSummary" class="screen hidden">
+    <div class="summary-card">
+      <h1>¡Lección completada! 🎉</h1>
+      <div class="summary-stats">
+        <div>⭐ XP total: <span id="summaryXP"></span></div>
+        <div>❤️ Corazones restantes: <span id="summaryHearts"></span></div>
+        <div>🔥 Racha: <span id="summaryStreak"></span> días</div>
+      </div>
+      <button type="button" id="restartBtn" class="btn-primary">PRACTICAR DE NUEVO</button>
+    </div>
+  </section>
+
+  <!-- ======================= PANTALLA: SIN CORAZONES ======================= -->
+  <section id="screenGameOver" class="screen hidden">
+    <div class="summary-card">
+      <h1>Sin corazones 💔</h1>
+      <p class="subtitle">Se acabaron tus corazones por esta ronda. Inténtalo de nuevo para seguir practicando.</p>
+      <button type="button" id="retryBtn" class="btn-primary">REINTENTAR</button>
+    </div>
+  </section>
+
+  <!-- ======================= SCRIPTS (orden de dependencias) ======================= -->
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/gamification.js"></script>
+
+  <script src="data/words.en.js"></script>
+  <script src="data/words.zh.js"></script>
+  <script src="data/words.ja.js"></script>
+  <script src="data/words.ar.js"></script>
+
+  <script src="js/dynamics/opcionMultiple.js"></script>
+  <script src="js/dynamics/traduccionBanco.js"></script>
+  <script src="js/dynamics/comparacion.js"></script>
+
+  <script src="js/engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
